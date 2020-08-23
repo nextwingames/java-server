@@ -23,7 +23,7 @@ Then [![Download](https://img.shields.io/badge/download-v1.5.0-blue)](https://gi
 
 ## Usage
 ### Execute server
-To execute your server, you have to make classes which extend Server.class. Service.class in org.nextwin.server so it would need to import org.nextwin.server. And then you can see the class need to be implemented 3 methods. After implementing these following methods, you can execute your server by calling go() method.
+To execute your server, you have to make classes which extend Server.class in org.nextwin.server. So it would need to import org.nextwin.server. And then you can see the class need to be implemented 3 methods. After implementing these following methods, you can execute your server by calling go() method.
 #### ServerThread createServerThread(Socket socket)
 Because this method creates appropriate server thread and return it, you have to make classes which extend ServerThread in org.nextwin.thread. 
 The related explanation will be given at implementing thread work.
@@ -45,7 +45,7 @@ NetworkManager networkManager;
 networkManager = NetworkManager.getInstance();    // get singletone instance
 
 // receive data (you don't need to use this because ServerThread does this)
-Header header = networkManager.networkManager.receive();
+Header header = networkManager.receive();
 byte[] data = networkManager.receive(header.getLength());
 
 // send data (ex. player information)
