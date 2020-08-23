@@ -17,8 +17,12 @@ public class JsonManager {
 	 * @return Byte array
 	 * @throws JsonProcessingException
 	 */
-	public static byte[] objectToBytes(Object object) throws JsonProcessingException {
-		return objectMapper.writeValueAsBytes(object);
+	public static byte[] objectToBytes(Object object) {
+		try {
+			return objectMapper.writeValueAsBytes(object);			
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 	/**
@@ -27,15 +31,19 @@ public class JsonManager {
 	 * @return
 	 * @throws JsonProcessingException
 	 */
-	public static byte[] objectToBytes(Header header) throws JsonProcessingException {
-		String json = objectMapper.writeValueAsString(header);
-		
-		if(header.getMsgType() < 10)
-			json += ' ';
-		if(header.getLength() < 10)
-			json += ' ';
-		
-		return json.getBytes();
+	public static byte[] objectToBytes(Header header) {
+		try {
+			String json = objectMapper.writeValueAsString(header);
+			
+			if(header.getMsgType() < 10)
+				json += ' ';
+			if(header.getLength() < 10)
+				json += ' ';
+			
+			return json.getBytes();
+		} catch (Exception e) {
+			return null;
+		}		
 	}
 	
 	/**
@@ -45,9 +53,13 @@ public class JsonManager {
 	 * @return Object
 	 * @throws IOException
 	 */
-	public static Object bytesToObject(byte[] bytes, Class<?> classType) throws IOException {
+	public static Object bytesToObject(byte[] bytes, Class<?> classType) {
 		String json = new String(bytes);
-		return objectMapper.readValue(json, classType);
+		try {
+			return objectMapper.readValue(json, classType);			
+		} catch (Exception e) {
+			return null;
+		}
 	}
 
 }

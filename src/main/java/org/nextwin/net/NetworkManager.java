@@ -58,13 +58,17 @@ public class NetworkManager {
 	 * @return received data, null when fail
 	 * @throws IOException
 	 */
-	public byte[] receive(int length) throws IOException {
+	public byte[] receive(int length) {
 		if(socket.isClosed())
 			return null;
 		
 		byte[] data = new byte[length];
-		if(receiver.read(data, 0, length) == -1)
+		try {
+			receiver.read(data, 0, length);
+		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
+		}
 		
 		return data;
 	}
@@ -74,13 +78,17 @@ public class NetworkManager {
 	 * @return received header, null when fail
 	 * @throws IOException
 	 */
-	public Header receive() throws IOException{
+	public Header receive() {
 		if(socket.isClosed())
 			return null;
 		
 		byte[] head = new byte[Header.HEADER_LENGTH];
-		if(receiver.read(head, 0, Header.HEADER_LENGTH) == -1)
+		try {
+			receiver.read(head, 0, Header.HEADER_LENGTH);
+		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
+		}
 
 		Header header = (Header)JsonManager.bytesToObject(head, Header.class);
 		return header;
@@ -93,7 +101,7 @@ public class NetworkManager {
 	 * @throws IOException
 	 * @throws JsonProcessingException
 	 */
-	public void send(int msgType, Object object) throws IOException, JsonProcessingException {
+	public void send(int msgType, Object object) {
 		byte[] data = JsonManager.objectToBytes(object);
 		
 		Header header = new Header(msgType, data.length);
@@ -104,7 +112,11 @@ public class NetworkManager {
 		System.arraycopy(head, 0, packet, 0, head.length);
 		System.arraycopy(data, 0, packet, head.length, data.length);
 		
-		sender.write(packet);
+		try {
+			sender.write(packet);			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
