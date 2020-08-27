@@ -52,7 +52,7 @@ public abstract class ServerThread extends Thread {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			onCloseServer();
+			onExitServer();
 			networkManager.close();
 		}
 	}
@@ -73,6 +73,6 @@ public abstract class ServerThread extends Thread {
 	/**
 	 * Called when server thread closing. 
 	 */
-	protected abstract void onCloseServer();
+	protected abstract void onExitServer();
 	
 }
