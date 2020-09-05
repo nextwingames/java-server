@@ -3,13 +3,16 @@ package org.nextwin.server;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ConcurrentHashMap;
 
+import org.nextwin.net.NetworkManager;
 import org.nextwin.thread.ServerThread;
 
 public abstract class Server {
 	
 	private int port;
 	protected static final String IP = "localhost";
+	public static ConcurrentHashMap<String, NetworkManager> connectedUsers = new ConcurrentHashMap<String, NetworkManager>();
 	
 	/**
 	 * To execute server process, this method should be called.

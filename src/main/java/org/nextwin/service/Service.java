@@ -2,13 +2,14 @@ package org.nextwin.service;
 
 import org.nextwin.net.NetworkManager;
 import org.nextwin.protocol.Packet;
+import org.nextwin.thread.ServerThread;
 
 public abstract class Service {
 	protected NetworkManager networkManager;
 	protected Packet packet;
 	
 	protected Service(Packet packet) {
-		networkManager = NetworkManager.getInstance();
+		networkManager = ServerThread.networkManager;
 		this.packet = packet;
 	}
 	

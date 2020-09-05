@@ -9,11 +9,11 @@ import org.nextwin.protocol.Header;
 public abstract class ServerThread extends Thread {
 	
 	protected Socket socket;
-	protected NetworkManager networkManager;
+	public static NetworkManager networkManager;
 	
 	public ServerThread(Socket socket) {
 		this.socket = socket;
-		networkManager = NetworkManager.getInstance();
+		networkManager = new NetworkManager(socket);
 	}
 	
 	/**
@@ -42,7 +42,6 @@ public abstract class ServerThread extends Thread {
 	private void work() throws IOException {
 		try {
 			onEnterServer();
-			networkManager.setSocket(socket);
 			
 			while(networkManager.isConnected()) {
 				Header header = networkManager.receive();

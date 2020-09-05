@@ -15,34 +15,19 @@ public class NetworkManager {
 	public static final int MAIN_PORT = 8899;
 	public static final int LOCAL_PORT = 8890;
 	public static int GAME_PORT = 9000;
-	
-	private static NetworkManager instance;
-	
+		
 	private Socket socket;
 	private OutputStream sender;
 	private InputStream receiver;
 		
-	private NetworkManager() {}
-	
-	/**
-	 * Return singleton instance of NetworkManager.
-	 * @return Singleton instance of NetworkManager
-	 */
-	public static NetworkManager getInstance() {
-		if(instance == null)
-			instance = new NetworkManager();
-		return instance;
-	}
-	
-	/**
-	 * Set socket and create OutputStream, InputStream.
-	 * @param socket
-	 * @throws IOException
-	 */
-	public void setSocket(Socket socket) throws IOException {
+	public NetworkManager(Socket socket) {
 		this.socket = socket;
-		sender = socket.getOutputStream();
-		receiver = socket.getInputStream();
+		try {
+			sender = socket.getOutputStream();
+			receiver = socket.getInputStream();			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -138,6 +123,10 @@ public class NetworkManager {
 	public void checkSocketState() {
 		System.out.println("socket.isConnected " + socket.isConnected());
 		System.out.println("socket.isClosed " + socket.isClosed());
+	}
+	
+	public Socket getSocket() {
+		return socket;
 	}
 	
 }
