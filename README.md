@@ -1,5 +1,5 @@
 # nextwin-server.jar
-[![Download](https://img.shields.io/badge/download-v1.6.0-blue)](https://github.com/nextwingames/server-framework/releases/download/v1.6.0/nextwin-server-1.6.0.jar)
+[![Download](https://img.shields.io/badge/download-v1.6.1-blue)](https://github.com/nextwingames/server-framework/releases/download/v1.6.1/nextwin-server-1.6.1.jar)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/nextwingames/server/blob/master/LICENSE) 
 
 ## Framework of game server
@@ -16,10 +16,10 @@ Open your pom.xml and add dependency.
 <dependency>
   <groupId>org.nextwin</groupId>
 	<artifactId>nextwin-server</artifactId>
-	<version>1.5.2</version>
+	<version>1.6.1</version>
 </dependency>
 ```
-Then [![Download](https://img.shields.io/badge/download-v1.6.0-blue)](https://github.com/nextwingames/server-framework/releases/download/v1.6.0/nextwin-server-1.6.0.jar) nextwin-server.jar to ${project_path}/target/lib/. We are going to register this library for maven repository soon. At that time, it will make able to download the library just by adding the dependency to pom.xml.
+Then [![Download](https://img.shields.io/badge/download-v1.6.1-blue)](https://github.com/nextwingames/server-framework/releases/download/v1.6.1/nextwin-server-1.6.1.jar) nextwin-server.jar to ${project_path}/target/lib/. We are going to register this library for maven repository soon. At that time, it will make able to download the library just by adding the dependency to pom.xml.
 
 ## Usage
 ### Execute server
