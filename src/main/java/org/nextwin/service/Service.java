@@ -8,7 +8,7 @@ public abstract class Service {
 	protected NetworkManager networkManager;
 	protected Packet packet;
 	
-	protected Service(Packet packet) {
+	public Service(Packet packet) {
 		networkManager = ServerThread.networkManager;
 		this.packet = packet;
 	}

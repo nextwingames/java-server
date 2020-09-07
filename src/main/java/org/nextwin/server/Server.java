@@ -12,7 +12,6 @@ public abstract class Server {
 	
 	private int port;
 	protected static final String IP = "localhost";
-	public static ConcurrentHashMap<String, NetworkManager> connectedUsers = new ConcurrentHashMap<String, NetworkManager>();
 	
 	/**
 	 * To execute server process, this method should be called.
