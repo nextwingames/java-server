@@ -26,7 +26,7 @@ public class JsonManager {
 	}
 	
 	/**
-	 * Serialize header, set length of bytes array as 26.
+	 * Serialize header, set length of bytes array as 27.
 	 * @param header
 	 * @return
 	 * @throws JsonProcessingException
@@ -36,6 +36,8 @@ public class JsonManager {
 			String json = objectMapper.writeValueAsString(header);
 			
 			if(header.getMsgType() < 10)
+				json += ' ';
+			if(header.getLength() < 100)
 				json += ' ';
 			if(header.getLength() < 10)
 				json += ' ';
