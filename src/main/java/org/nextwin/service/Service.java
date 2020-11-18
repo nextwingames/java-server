@@ -6,11 +6,9 @@ import org.nextwin.thread.ServerThread;
 
 public abstract class Service {
 	protected NetworkManager networkManager;
-	protected Dto dto;
 	
-	public Service(Dto dto) {
+	public Service() {
 		networkManager = ServerThread.networkManager;
-		this.dto = dto;
 	}
 	
 	/**
