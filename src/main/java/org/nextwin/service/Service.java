@@ -1,16 +1,16 @@
 package org.nextwin.service;
 
 import org.nextwin.net.NetworkManager;
-import org.nextwin.protocol.Packet;
+import org.nextwin.protocol.Dto;
 import org.nextwin.thread.ServerThread;
 
 public abstract class Service {
 	protected NetworkManager networkManager;
-	protected Packet packet;
+	protected Dto dto;
 	
-	public Service(Packet packet) {
+	public Service(Dto dto) {
 		networkManager = ServerThread.networkManager;
-		this.packet = packet;
+		this.dto = dto;
 	}
 	
 	/**

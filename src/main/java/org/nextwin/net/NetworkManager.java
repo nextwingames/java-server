@@ -11,10 +11,6 @@ import org.nextwin.util.JsonManager;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 public class NetworkManager {
-
-	public static final int MAIN_PORT = 8899;
-	public static final int LOCAL_PORT = 8890;
-	public static int GAME_PORT = 9000;
 		
 	private Socket socket;
 	private OutputStream sender;
