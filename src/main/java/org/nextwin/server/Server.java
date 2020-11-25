@@ -7,11 +7,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.nextwin.net.NetworkManager;
 import org.nextwin.thread.ServerThread;
+import org.nextwin.util.Logger;
 
 public abstract class Server {
 	
+	private final String TAG = "Server";
+	private String ip;
 	private int port;
-	protected static final String IP = "localhost";
 	
 	/**
 	 * To execute server process, this method should be called.
@@ -23,8 +25,11 @@ public abstract class Server {
 
 		try {
 			serverSocket = new ServerSocket();
+			
+			ip = getIp();
 			port = getPort();
-			serverSocket.bind(new InetSocketAddress(IP, port));
+			Logger.log(TAG, ip + ":" + port);
+			serverSocket.bind(new InetSocketAddress(ip, port));
 			
 			while(true) {
 				socket = serverSocket.accept();
@@ -62,6 +67,12 @@ public abstract class Server {
 	 * Return port number of the server.
 	 * @return port
 	 */
-	protected abstract int getPort();		
+	protected abstract int getPort();	
+	
+	/**
+	 * Return IP address of the server.
+	 * @return
+	 */
+	protected abstract String getIp();
 	
 }

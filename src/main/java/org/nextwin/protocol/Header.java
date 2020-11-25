@@ -3,7 +3,7 @@ package org.nextwin.protocol;
 
 public class Header {
 	
-	public static final int HEADER_LENGTH = 27;
+	public static final int HEADER_LENGTH = 30;
 
 	private int msgType;
 	private int length;
